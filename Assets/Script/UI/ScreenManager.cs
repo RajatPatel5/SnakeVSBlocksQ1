@@ -7,7 +7,7 @@ public class ScreenManager : MonoBehaviour
 {
 
     public BaseScreen[] screen;
- public BaseScreen CurrentScreen;
+    public BaseScreen CurrentScreen;
     public static ScreenManager inst;
 
 
@@ -16,7 +16,6 @@ public class ScreenManager : MonoBehaviour
         inst = this;
         CurrentScreen.canvas.enabled = true;
 
-      
     }
 
     public void SwitchScreen(ScreenType screenType)

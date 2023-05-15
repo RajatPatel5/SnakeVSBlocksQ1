@@ -4,39 +4,63 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public Transform target;
+    public static FollowPlayer instance;
 
-    public float minSpeed = 1;
-    public float averageSpeed = 15;
-    public float maxSpeed = 20;
+    public Transform SnakeTailPrefab;
+    public float size;
 
-    private float initialHeight;
-
+    public List<Transform> snackTail = new List<Transform>();
+    public List<Vector2> positions = new List<Vector2>();
     // Start is called before the first frame update
     void Start()
     {
-        initialHeight = transform.localPosition.y;
+        
+        positions.Add(SnakeTailPrefab.position);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float distance = Mathf.Abs(target.position.x - transform.position.x);
-        float newSpeed;
+        float distance = ((Vector2)SnakeTailPrefab.position - positions[0]).magnitude;
 
-        float percent = (distance / 2);
-
-        newSpeed = (averageSpeed * percent) + (minSpeed * percent);
-
-        if (distance > 2)
+        if (distance > size)
         {
-            newSpeed = maxSpeed;
+            Vector2 direction = ((Vector2)SnakeTailPrefab.position - positions[0]).normalized;
+
+            positions.Insert(0, positions[0] + direction * size);
+            positions.RemoveAt(positions.Count - 1);
+
+            distance -= size;
         }
 
-        Vector2 newPos = new Vector2(target.position.x, transform.position.y + percent);
-
-        transform.position = Vector2.MoveTowards(transform.position, newPos, newSpeed * Time.deltaTime);
-
-        transform.localPosition = new Vector2(transform.localPosition.x, Mathf.Clamp(transform.localPosition.y,initialHeight,initialHeight + percent));
+        for (int i = 0; i < snackTail.Count; i++)
+        {
+            snackTail[i].position = Vector2.Lerp(positions[i + 1], positions[i], distance / size);
+        }
     }
+
+    public void AddTail()
+    {
+        
+
+            Transform tail = Instantiate(SnakeTailPrefab, positions[positions.Count - 1], Quaternion.identity, transform);
+            snackTail.Add(tail);
+            positions.Add(tail.position);
+        
+
+    }
+
+    public void Delete()
+    {
+
+        //Player = FindObjectOfType<ChildPrefab>();
+
+        snackTail.RemoveAt(snackTail.Count-1);
+        positions.RemoveAt(positions.Count-1);
+       // Destroy(snackTail[1]);
+        //Destroy(positions[2]);
+
+    }
+
+
 }

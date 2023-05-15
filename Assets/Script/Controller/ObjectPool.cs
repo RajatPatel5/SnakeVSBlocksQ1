@@ -10,7 +10,7 @@ public class ObjectPool : MonoBehaviour
     public GameObject[] prefabs;
 
     private int index;
-    // Start is called before the first frame update
+   
     void Awake()
     {
         prefabs = new GameObject[amount];

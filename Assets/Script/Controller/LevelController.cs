@@ -17,7 +17,7 @@ public class LevelController : MonoBehaviour
 
     public Text GameoverScoreText;
 
-    public float gameSpeed= 2;
+    public float gameSpeed= 4;
 
     public int BoxAmount = 6;
 
@@ -38,13 +38,12 @@ public class LevelController : MonoBehaviour
     private int points;
 
     public Color R, G, B;
-
     public GameObject MainScreen;
-    //public static bool isPause;
+   
     public GameObject boxs1;
     public GameObject boxs2;
 
-   
+   // public Sprite DeathPlayer;
 
     public bool gameOver = true;
 
@@ -59,11 +58,11 @@ public class LevelController : MonoBehaviour
         boxs2.SetActive(false);
     }
 
-    // Start is called before the first frame update
+  
     void Start()
     {
-       
-
+    
+        //  player.gameObject.GetComponent<SpriteRenderer>().sprite = DeathPlayer;
         boxs1.SetActive(true);
         boxs2.SetActive(true);
 
@@ -74,22 +73,18 @@ public class LevelController : MonoBehaviour
         SpawnPicups();
 
         InvokeRepeating("Difficulty", cicleTime, cicleTime);
+
+      
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 
 
-   
 
     public void StartBtn()
     {
         
         ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
-        gameSpeed = 2;
+        gameSpeed = 4;
         
     }
 
@@ -98,9 +93,10 @@ public class LevelController : MonoBehaviour
       //  Application.LoadLevel(Application.LoadLevel);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //ScreenManager.inst.SwitchScreen(ScreenType.Screen1);
-        MainScreen.SetActive(false);
-       // ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
+
+      
+       
+        ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
         Time.timeScale = 1f;
       
         

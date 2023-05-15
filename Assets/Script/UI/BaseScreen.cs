@@ -14,9 +14,6 @@ public class BaseScreen : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
     }
-
-
-
 }
 
 

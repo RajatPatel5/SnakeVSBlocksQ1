@@ -14,9 +14,6 @@ public class Boxs : MonoBehaviour
 
     public GameObject boxsGroup;
 
-   // public int Length { get; private set; }
-
-    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>().transform;
@@ -37,7 +34,7 @@ public class Boxs : MonoBehaviour
             bool randomBool = Random.value > 0.5f;
             blockline[i].SetActive(randomBool);
         }
-        //DecreaseDifficulty();
+      
     }
     void Reposition()
     {
@@ -48,11 +45,7 @@ public class Boxs : MonoBehaviour
 
         boxsGroup.transform.localPosition = new Vector2(0, Random.Range(positionRange.x, positionRange.y));
     }
-    //void DecreaseDifficulty()
-    //{
-
-
-    //}
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {

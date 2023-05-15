@@ -19,28 +19,20 @@ public class Player : MonoBehaviour
     public Transform Point;
 
     public float speed = 5;
-    // Start is called before the first frame update
+ 
     void Start()
     {
-       // lastYpos = transform.position.y;
-
-        rb = GetComponent<Rigidbody2D>();
+      rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+
+    
     void Update()
     {
-        //if (Input.GetMouseButton(0))
-        //{
-            // Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.);
-         
-
-       // }
+        
         // transform.position = new Vector2(Mathf.Clamp(transform.position.x, -5, 5), transform.position.y);
 
     }
-
-
 
     private void FixedUpdate()
     {
@@ -71,13 +63,17 @@ public class Player : MonoBehaviour
             return;
 
         int children = transform.childCount;
-        if(children <= 1)
+        if(children <= 2)
         {
             LevelController.instance.GameOver();
         }
         else
         {
-            Destroy(transform.GetChild(children - 1).gameObject);
+          
+           
+            FollowPlayer followPlayer = GetComponent<FollowPlayer>();
+            followPlayer.Delete();
+            Destroy(transform.GetChild(children-1).gameObject);
             LevelController.instance.Score(1);
             Instantiate(prefab, Point.transform.position, Quaternion.identity);
         }

@@ -8,9 +8,18 @@ public class Child : MonoBehaviour
 {
     public Text amountText;
 
-    public GameObject childPrefab;
+   // public GameObject childPrefab;
 
     private int amount;
+
+   // private GameObject player;
+   // private FollowPlayer followPlayer;
+
+
+    private void Awake()
+    {
+       // player.GetComponent<FollowPlayer>().AddTail();
+    }
 
     private void OnEnable()
     {
@@ -18,32 +27,44 @@ public class Child : MonoBehaviour
         amountText.text = amount.ToString();
     }
 
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player"))
         {
-            for(int i = 0; i< amount; i++)
-            {
-                int index = other.transform.childCount;
-                GameObject newChild = Instantiate(childPrefab, other.transform);
-                newChild.transform.localPosition = new Vector3(0, -index, 0);
-
-                FollowPlayer followPlayer = newChild.GetComponent<FollowPlayer>();
-
-                if(followPlayer != null)
-                {
-                    followPlayer.target = other.transform.GetChild(index - 1);
-                }    
-            }
-
-            Player player = other.GetComponent<Player>();
-            if(player != null)
-            {
-                player.SetText(player.transform.childCount);
-            }
-
+            
            
-        }
+            for (int i = 0; i < amount; i++)
+            {
+              
+                    FollowPlayer followPlayer = other.GetComponent<FollowPlayer>();
+                if (followPlayer != null)
+                {
+                    followPlayer.AddTail();
+                }
+              //  player.GetComponent<FollowPlayer>().AddTail();
+                //    int index = other.transform.childCount;
+                //    GameObject newChild = Instantiate(childPrefab, other.transform);
+                //    newChild.transform.localPosition = new Vector3(0, -index-0.1f, 0);
+                    
+                 //  followPlayer.GetComponent<FollowPlayer>().AddTail();
+
+              //   if(followPlayer != null)
+                //    {
+                //        followPlayer.target = other.transform.GetChild(index - 1);
+                //    }    
+                //}
+
+                Player player = other.GetComponent<Player>();
+                if(player != null)
+                {
+                    player.SetText(player.transform.childCount);
+                 }
+            }
+
+
+            }
         gameObject.SetActive(false);
     }
 }

@@ -21,14 +21,14 @@ public class Box : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    // Start is called before the first frame update
+   
     void Start()
     {
-        // SetAmount();
+        
        gameObject.SetActive(false);
      }
 
-    // Update is called once per frame
+   
     void Update()
     {
         if(player != null && nextTime <Time.time)
