@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     }
 
 
-    
+   
     void Update()
     {
         
@@ -36,19 +36,22 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+       
 
-        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float PosX = worldPoint.x;
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float PosX = worldPoint.x;
 
-        mouseDistance = Mathf.Clamp(PosX - transform.position.x, -1, 1);
+            mouseDistance = Mathf.Clamp(PosX - transform.position.x, -1, 1);
 
-        if (LevelController.instance.gameOver)
-            return;
+            if (LevelController.instance.gameOver)
+                return;
 
-        if (!sliding)
-            rb.velocity = new Vector2(mouseDistance * speed, LevelController.instance.gameSpeed * LevelController.instance.multiplier);
-        else
-            rb.velocity = new Vector2(dir * 2.5f, LevelController.instance.gameSpeed * LevelController.instance.multiplier);
+            if (!sliding)
+                rb.velocity = new Vector2(mouseDistance * speed, LevelController.instance.gameSpeed * LevelController.instance.multiplier);
+            else
+                rb.velocity = new Vector2(dir * 2.5f, LevelController.instance.gameSpeed * LevelController.instance.multiplier);
+
+     
 
     }
 
@@ -75,6 +78,7 @@ public class Player : MonoBehaviour
             followPlayer.Delete();
             Destroy(transform.GetChild(children-1).gameObject);
             LevelController.instance.Score(1);
+            AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio2BlockHit);
             Instantiate(prefab, Point.transform.position, Quaternion.identity);
         }
         

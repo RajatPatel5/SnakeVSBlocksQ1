@@ -14,6 +14,7 @@ public class LevelController : MonoBehaviour
 
 
     public Text scoreText;
+    public Text highScore;
 
     public Text GameoverScoreText;
 
@@ -51,17 +52,23 @@ public class LevelController : MonoBehaviour
 
     private void Awake()
     {
+       
+
         gameSpeed = 0;
        // Time.timeScale = 0f;
         start.onClick.AddListener(StartBtn);
         boxs1.SetActive(false);
         boxs2.SetActive(false);
+     
+
     }
 
   
     void Start()
     {
-    
+        highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+       
+
         //  player.gameObject.GetComponent<SpriteRenderer>().sprite = DeathPlayer;
         boxs1.SetActive(true);
         boxs2.SetActive(true);
@@ -73,16 +80,19 @@ public class LevelController : MonoBehaviour
         SpawnPicups();
 
         InvokeRepeating("Difficulty", cicleTime, cicleTime);
+       
 
-      
+
+
     }
-  
+
 
 
 
     public void StartBtn()
     {
-        
+        AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio2GameBG);
+        AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
         gameSpeed = 4;
         
@@ -90,8 +100,8 @@ public class LevelController : MonoBehaviour
 
     public void RetryBtn()
     {
-      //  Application.LoadLevel(Application.LoadLevel);
-
+        //  Application.LoadLevel(Application.LoadLevel);
+        AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
       
@@ -104,11 +114,21 @@ public class LevelController : MonoBehaviour
 
     public void Exit()
     {
+        AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         Application.Quit();
     }
 
     public void GameOver()
     {
+      int i =  int.Parse(scoreText.text);
+        if(i> PlayerPrefs.GetInt("HighScore",0))
+        {
+            PlayerPrefs.SetInt("HighScore", i);
+            highScore.text = i.ToString();
+        }
+
+        AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio3GameOver);
+        AudioManagerBG.inst.audioSource.Stop();
         GameoverScoreText.text = scoreText.text;
         gameOver = true;
         Time.timeScale = 0f;
@@ -117,7 +137,8 @@ public class LevelController : MonoBehaviour
 
     public void RestartScene()
     {
-      
+        AudioManagerBG.inst.audioSource.Play();
+        AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }

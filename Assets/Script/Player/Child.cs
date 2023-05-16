@@ -33,8 +33,8 @@ public class Child : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            
-           
+
+            AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio1FoodCollect);
             for (int i = 0; i < amount; i++)
             {
               

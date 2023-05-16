@@ -53,12 +53,11 @@ public class FollowPlayer : MonoBehaviour
     public void Delete()
     {
 
-        //Player = FindObjectOfType<ChildPrefab>();
+        
 
         snackTail.RemoveAt(snackTail.Count-1);
         positions.RemoveAt(positions.Count-1);
-       // Destroy(snackTail[1]);
-        //Destroy(positions[2]);
+      
 
     }
 

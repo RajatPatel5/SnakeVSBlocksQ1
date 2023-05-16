@@ -15,6 +15,7 @@ public class ScreenManager : MonoBehaviour
     {
         inst = this;
         CurrentScreen.canvas.enabled = true;
+        AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio1MainBG);
 
     }
 
