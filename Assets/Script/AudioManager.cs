@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager inst;
 
-    [SerializeField] AudioSource audioSource;
+    [SerializeField]public AudioSource audioSource;
 
 
     public Audio[] clips;

@@ -11,7 +11,10 @@ public class LevelController : MonoBehaviour
 
     public Button start;
 
+    public Button ChangeColor;
 
+    public Button Back;
+   
 
     public Text scoreText;
     public Text highScore;
@@ -44,7 +47,12 @@ public class LevelController : MonoBehaviour
     public GameObject boxs1;
     public GameObject boxs2;
 
-   // public Sprite DeathPlayer;
+    public GameObject AudioBtn;
+    public Image mute;
+
+    bool setting = true;
+
+    bool audiomute = true;
 
     public bool gameOver = true;
 
@@ -57,15 +65,19 @@ public class LevelController : MonoBehaviour
         gameSpeed = 0;
        // Time.timeScale = 0f;
         start.onClick.AddListener(StartBtn);
+        ChangeColor.onClick.AddListener(ChangePlayer);
+        Back.onClick.AddListener(BackToMain);
         boxs1.SetActive(false);
         boxs2.SetActive(false);
      
 
     }
 
+    
   
     void Start()
     {
+        AudioBtn.SetActive(false);
         highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
        
 
@@ -77,7 +89,7 @@ public class LevelController : MonoBehaviour
 
         player = FindObjectOfType<Player>().transform;
 
-        SpawnPicups();
+      
 
         InvokeRepeating("Difficulty", cicleTime, cicleTime);
        
@@ -86,14 +98,58 @@ public class LevelController : MonoBehaviour
 
     }
 
+    void ChangePlayer()
+    {
+        ScreenManager.inst.SwitchScreen(ScreenType.Screen4);
+    }
 
+    void BackToMain()
+    {
+        ScreenManager.inst.SwitchScreen(ScreenType.Screen1);
+    }
 
+    public void SettingsBtn()
+    {
+        if(setting == true)
+        {
+            AudioBtn.SetActive(true);
+            setting = false;
+        }
+        else
+        {
+            AudioBtn.SetActive(false);
+            setting = true;
+        }
+    }
+
+    public void Audio()
+    {
+        if(audiomute == true)
+        {
+            mute.enabled = false;
+            AudioManagerBG.inst.audioSource.Stop();
+          
+            audiomute = false;
+
+        }
+        else
+        {
+            mute.enabled = true;
+            AudioManagerBG.inst.audioSource.Play();
+          
+            audiomute = true;
+        }
+    }
 
     public void StartBtn()
     {
-        AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio2GameBG);
+        if (audiomute == true)
+        {
+            AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio2GameBG);
+        }
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
+        SpawnPicups();
         gameSpeed = 4;
         
     }
@@ -160,8 +216,10 @@ public class LevelController : MonoBehaviour
 
     void SpawnPicups()
     {
-        objectPool.GetObject().transform.position = new Vector2(Random.Range(xLimit.x, xLimit.y), player.position.y + 10);
 
-        Invoke("SpawnPicups", Random.Range(1f, 3f));
+            objectPool.GetObject().transform.position = new Vector2(Random.Range(xLimit.x, xLimit.y), player.position.y + 10);
+
+            Invoke("SpawnPicups", Random.Range(1f, 3f));
+      
     }
 }

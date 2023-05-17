@@ -22,4 +22,5 @@ public enum ScreenType
     Screen1,
     Screen2,
     Screen3,
+    Screen4
 }
