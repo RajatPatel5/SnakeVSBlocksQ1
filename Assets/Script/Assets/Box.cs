@@ -13,6 +13,7 @@ public class Box : MonoBehaviour
 
     private float nextTime;
 
+  
     private Color initialColor;
 
     private SpriteRenderer spriteRenderer;
@@ -87,6 +88,7 @@ public class Box : MonoBehaviour
         SetAmountText();
         if(amount <= 0)
         {
+          
             gameObject.SetActive(false);
             player = null;
         }

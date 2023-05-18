@@ -17,7 +17,7 @@ public class ObjectPool : MonoBehaviour
 
         for(int i = 0; i< amount; i++)
         {
-            prefabs[i] = Instantiate(prefab, new Vector2(0, 20), Quaternion.identity);
+            prefabs[i] = Instantiate(prefab, new Vector2(0, 15), Quaternion.identity);
             prefabs[i].SetActive(false);
         }
     }
