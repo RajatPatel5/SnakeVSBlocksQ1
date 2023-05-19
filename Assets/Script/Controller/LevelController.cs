@@ -57,6 +57,8 @@ public class LevelController : MonoBehaviour
 
     bool audiomute = true;
 
+   
+
 
     public bool gameOver = true;
 
@@ -65,8 +67,9 @@ public class LevelController : MonoBehaviour
     public GameObject[] SFX;
     public SpriteRenderer sprite;
 
-    //public GameObject Gameoverprefab;
-    //public GameObject gameoverpoint;
+    
+
+   
 
     private void Awake()
     {
@@ -87,11 +90,12 @@ public class LevelController : MonoBehaviour
   
     void Start()
     {
-       
+
         AudioBtn.SetActive(false);
       
         highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
-       
+
+
 
         //  player.gameObject.GetComponent<SpriteRenderer>().sprite = DeathPlayer;
         boxs1.SetActive(true);
@@ -104,6 +108,11 @@ public class LevelController : MonoBehaviour
 
 
         InvokeRepeating("Difficulty", cicleTime, cicleTime);
+
+
+
+
+        SpawnPicups();
 
 
 
@@ -142,7 +151,7 @@ public class LevelController : MonoBehaviour
         if(audiomute == true)
         {
             mute.enabled = false;
-            AudioManagerBG.inst.audioSource.Stop();
+            AudioManagerBG.inst.audioSource.mute=true;
            
             audiomute = false;
 
@@ -150,7 +159,7 @@ public class LevelController : MonoBehaviour
         else
         {
             mute.enabled = true;
-            AudioManagerBG.inst.audioSource.Play();
+            AudioManagerBG.inst.audioSource.mute=false;
            
             audiomute = true;
         }
@@ -159,14 +168,19 @@ public class LevelController : MonoBehaviour
 
     public void StartBtn()
     {
+
+
+      
+
         sprite.sprite = bgsprite[Random.Range(0, bgsprite.Length - 1)];
-        if (audiomute == true)
-        {
+      
             AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio2GameBG);
-        }
+          
+           
+       
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
-        SpawnPicups();
+       
         gameSpeed = 4;
         // scoreText.text = ("0");
         // GameoverScoreText.text = ("0");
@@ -185,6 +199,7 @@ public class LevelController : MonoBehaviour
 
         gameOver = false;
 
+
        
 
 
@@ -194,6 +209,10 @@ public class LevelController : MonoBehaviour
 
     public void RetryBtn()
     {
+
+      
+
+        player.transform.position = new Vector2(0, 0);
         sprite.sprite = bgsprite[Random.Range(0, bgsprite.Length - 1)];
         for (int l = 0; l < SFX.Length; l++)
         {
@@ -202,18 +221,30 @@ public class LevelController : MonoBehaviour
 
         int s = Random.Range(0, SFX.Length);
         SFX[s].SetActive(true);
+
+       
+
+        boxs1.transform.position = new Vector2(0, 16);
+        boxs2.transform.position = new Vector2(0, 35);
+        boxs3.transform.position = new Vector2(0, 54);
+
+        boxs1.GetComponent<Boxs>().Start();
+     
+        boxs2.GetComponent<Boxs>().Start();
       
+         boxs3.GetComponent<Boxs>().Start();
+
+        
 
         //  Application.LoadLevel(Application.LoadLevel);
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        boxs1.transform.position = new Vector2(0,16);
-        boxs2.transform.position = new Vector2(0,30);
-        boxs3.transform.position = new Vector2(0, 44);
-        player.transform.position = new Vector2(0, 0);
+
+     
+
         ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
-        AudioManagerBG.inst.audioSource.Play();
+        //AudioManagerBG.inst.audioSource.Play();
 
         scoreText.text = "0";
         int i = int.Parse(GameoverScoreText.text);
@@ -230,6 +261,9 @@ public class LevelController : MonoBehaviour
 
 
     }
+
+
+
 
     public void Exit()
     {
@@ -260,18 +294,32 @@ public class LevelController : MonoBehaviour
 
     public void RestartScene()
     {
-        AudioManagerBG.inst.audioSource.Play();
+       
+
+
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       
         AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio1MainBG);
+          
+       
+       
        // AudioManagerBG.inst.audioSource.Stop();
-         mute.enabled = true;
-        audiomute = true;
+        // mute.enabled = true;
+        //audiomute = true;
 
         boxs1.transform.position = new Vector2(0, 16);
-        boxs2.transform.position = new Vector2(0, 30);
+        boxs2.transform.position = new Vector2(0, 35);
         player.transform.position = new Vector2(0, 0);
-        boxs3.transform.position = new Vector2(0, 44);
+        boxs3.transform.position = new Vector2(0, 54);
+
+        boxs1.GetComponent<Boxs>().Start();
+
+        boxs2.GetComponent<Boxs>().Start();
+
+        boxs3.GetComponent<Boxs>().Start();
+
+
         ScreenManager.inst.SwitchScreen(ScreenType.Screen1);
 
         
@@ -306,7 +354,7 @@ public class LevelController : MonoBehaviour
         if (gameOver==false)
             objectPool.GetObject().transform.position = new Vector2(Random.Range(xLimit.x, xLimit.y), player.position.y + 15);
 
-            Invoke("SpawnPicups", 5);//Random.Range(0f, 5f));
+            Invoke("SpawnPicups",Random.Range(0f, 3f));
       
     }
 }

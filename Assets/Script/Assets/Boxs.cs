@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boxs : MonoBehaviour
 {
+   
+
     public Box[] Allboxes;
 
     public GameObject[] blockline;
@@ -14,16 +16,21 @@ public class Boxs : MonoBehaviour
 
     public GameObject boxsGroup;
 
-    void Start()
+     public void Start()
     {
         player = FindObjectOfType<Player>().transform;
         SetBox();
-        
-    }
+        for (int i = 0; i < blockline.Length; i++)
+        {
+            blockline[i].SetActive(false);
+        }
+
+
+     }
 
   
     
-    void SetBox()
+ public  void SetBox()
     {
         for(int i = 0; i< Allboxes.Length; i++)
         {
@@ -36,7 +43,7 @@ public class Boxs : MonoBehaviour
         }
       
     }
-    void Reposition()
+   public void Reposition()
     {
         int boxsAmount = FindObjectsOfType<Boxs>().Length;
       

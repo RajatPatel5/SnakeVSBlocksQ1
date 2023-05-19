@@ -1733,7 +1733,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite1
+        m_MethodName: ChangeSprite6
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2335,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4054764061019759228, guid: 4935cb658a66346b38948d635a7329b4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4054764061019759231, guid: 4935cb658a66346b38948d635a7329b4, type: 3}
       propertyPath: looping
@@ -4382,7 +4382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1477156122372548967, guid: 76d4771a7143e44adafd64849b8590d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76d4771a7143e44adafd64849b8590d3, type: 3}
@@ -4471,7 +4471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519027682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 44, z: -0.0016620839}
+  m_LocalPosition: {x: 0, y: 54.8, z: -0.0016620839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5225,7 +5225,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite4
+        m_MethodName: ChangeSprite3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6342,7 +6342,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite
+        m_MethodName: ChangeSprite5
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7106,7 +7106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843407712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: -0.0016620839}
+  m_LocalPosition: {x: 0, y: 35.43, z: -0.0016620839}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8565,7 +8565,7 @@ MonoBehaviour:
   gameSpeed: 2
   BoxAmount: 6
   damageTime: 0.25
-  blockLineDistance: 13
+  blockLineDistance: 20
   objectPool: {fileID: 1656600861}
   xLimit: {x: -5, y: 5}
   multiplier: 1
@@ -8586,8 +8586,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 37c51f37803684465a065c4bde849099, type: 3}
   - {fileID: 21300000, guid: a184d20092f454e19becc341253ec93f, type: 3}
   - {fileID: 21300000, guid: 16e0173b5330f45aab890823b68acec1, type: 3}
-  - {fileID: 21300000, guid: c599d9951122e4f9196e5341b1b6566f, type: 3}
-  - {fileID: 21300000, guid: c599d9951122e4f9196e5341b1b6566f, type: 3}
+  - {fileID: 21300000, guid: c8d666145c4594e9694cee6ece38421c, type: 3}
+  - {fileID: 21300000, guid: 2f0aeedccaad14f9488462d2ef8f207a, type: 3}
   SFX:
   - {fileID: 1308519146}
   - {fileID: 1654479028}
@@ -9046,7 +9046,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite3
+        m_MethodName: ChangeSprite8
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9293,7 +9293,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite7
+        m_MethodName: ChangeSprite2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11055,19 +11055,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 1911118378}
-  sprite1: {fileID: 0}
+  sprite1: {fileID: 25062952882480735, guid: fb93247b7c04a4d5ba11535afd2a43d9, type: 3}
   sprite2: {fileID: 1193912367}
   Player: {fileID: 579278301}
   newSprite:
+  - {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  - {fileID: 21300000, guid: 07d44e854890f4d4e88cbf3a42b3b231, type: 3}
+  - {fileID: 21300000, guid: e024148c5927c4788b4c60d736c2df27, type: 3}
+  - {fileID: 21300000, guid: 0f4951dfd962f488c884cb6f44e99c39, type: 3}
+  - {fileID: 21300000, guid: acaed811157a44090a2f931e829cf3d7, type: 3}
   - {fileID: 21300000, guid: 1d44b337bf3334f24a374168ac9c817b, type: 3}
   - {fileID: 21300000, guid: 8957f24a809c34eef9eb3b2d88ba835a, type: 3}
   - {fileID: 21300000, guid: dbc14f9c2de7b4c3ca213d640d430e11, type: 3}
   - {fileID: 21300000, guid: 97e5e02cb7c9046e5b38dc3cf06ac907, type: 3}
-  - {fileID: 21300000, guid: 0f4951dfd962f488c884cb6f44e99c39, type: 3}
-  - {fileID: 21300000, guid: acaed811157a44090a2f931e829cf3d7, type: 3}
-  - {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  - {fileID: 21300000, guid: 07d44e854890f4d4e88cbf3a42b3b231, type: 3}
-  - {fileID: 21300000, guid: e024148c5927c4788b4c60d736c2df27, type: 3}
 --- !u!4 &1544956797
 Transform:
   m_ObjectHideFlags: 0
@@ -12056,7 +12056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 9154458753598411185, guid: 146f56f8535a349cab4522c109ebfb3f, type: 3}
-  amount: 5
+  amount: 6
   prefabs: []
 --- !u!4 &1656600862
 Transform:
@@ -13057,8 +13057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -340}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -158}
+  m_SizeDelta: {x: 1920, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1850777025
 MonoBehaviour:
@@ -13082,11 +13082,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 105
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 105
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -14057,7 +14057,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite2
+        m_MethodName: ChangeSprite7
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15230,7 +15230,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite6
+        m_MethodName: ChangeSprite1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15511,7 +15511,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1544956796}
         m_TargetAssemblyTypeName: PlayerOutfit, Assembly-CSharp
-        m_MethodName: ChangeSprite5
+        m_MethodName: ChangeSprite4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

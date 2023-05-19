@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     public Transform Point;
 
     public float speed = 5;
+
+
+    private float deltaX, deltaY;
+
  
     void Start()
     {
@@ -38,12 +42,27 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(Input.touchCount>0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+           // float PosX = touchPos.x;
+              switch(touch.phase)
+             {
+            //    case TouchPhase.Began:
+            //       deltaX = touchPos.x - transform.position.x;
+            //      break;
+                case TouchPhase.Moved:
+                 deltaX = touchPos.x;
+                   break;
+              }
+        }
+
+
+           // Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
        
 
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float PosX = worldPoint.x;
-
-            mouseDistance = Mathf.Clamp(PosX - transform.position.x, -1, 1);
+            mouseDistance = deltaX - transform.position.x;
 
             if (LevelController.instance.gameOver)
                   rb.velocity = Vector2.zero;
