@@ -11,14 +11,15 @@ public class FollowPlayer : MonoBehaviour
 
     public List<Transform> snackTail = new List<Transform>();
     public List<Vector2> positions = new List<Vector2>();
-    // Start is called before the first frame update
+
+
     void Start()
     {
         
         positions.Add(transform.position);
     }
 
-    // Update is called once per frame
+  
     void FixedUpdate()
     {
         float distance = ((Vector2)transform.position - positions[0]).magnitude;
@@ -46,8 +47,12 @@ public class FollowPlayer : MonoBehaviour
             Transform tail = Instantiate(SnakeTailPrefab, positions[positions.Count - 1], Quaternion.identity, transform);
             snackTail.Add(tail);
             positions.Add(tail.position);
-        
 
+        Player player = GetComponent<Player>();
+        if (player != null)
+        {
+            player.SetText(player.transform.childCount);
+        }
     }
 
     public void Delete()

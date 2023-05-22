@@ -8,17 +8,16 @@ public class Child : MonoBehaviour
 {
     public Text amountText;
 
-   // public GameObject childPrefab;
+ 
 
-    private int amount;
+    private int amount ;
 
-   // private GameObject player;
-   // private FollowPlayer followPlayer;
+ 
 
 
     private void Awake()
     {
-       // player.GetComponent<FollowPlayer>().AddTail();
+       
     }
 
     private void OnEnable()

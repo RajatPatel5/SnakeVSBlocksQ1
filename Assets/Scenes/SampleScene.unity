@@ -8559,6 +8559,7 @@ MonoBehaviour:
   start: {fileID: 1448603910}
   ChangeColor: {fileID: 1864346515}
   Back: {fileID: 1991251356}
+  followplayer: {fileID: 1911118375}
   scoreText: {fileID: 368273964}
   highScore: {fileID: 362221911}
   GameoverScoreText: {fileID: 1709562132}
@@ -13175,7 +13176,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: "4\x03"
 --- !u!222 &1855555522
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13739,6 +13740,7 @@ MonoBehaviour:
   prefab: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
   Point: {fileID: 1997837197}
   speed: 25
+  Prefab: {fileID: 0}
 --- !u!50 &1911118377
 Rigidbody2D:
   serializedVersion: 4
@@ -14176,7 +14178,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "0\x03"
+  m_Text: "4\x03"
 --- !u!222 &1931812740
 CanvasRenderer:
   m_ObjectHideFlags: 0

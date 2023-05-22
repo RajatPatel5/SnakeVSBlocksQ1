@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     public float speed = 5;
 
 
+    public GameObject Prefab;
+
+
     private float deltaX, deltaY;
 
  
@@ -36,7 +39,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         
-        // transform.position = new Vector2(Mathf.Clamp(transform.position.x, -5, 5), transform.position.y);
+      
 
     }
 
@@ -46,12 +49,10 @@ public class Player : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
-           // float PosX = touchPos.x;
+          
               switch(touch.phase)
              {
-            //    case TouchPhase.Began:
-            //       deltaX = touchPos.x - transform.position.x;
-            //      break;
+          
                 case TouchPhase.Moved:
                  deltaX = touchPos.x;
                    break;
@@ -59,14 +60,14 @@ public class Player : MonoBehaviour
         }
 
 
-           // Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
        
 
             mouseDistance = deltaX - transform.position.x;
 
             if (LevelController.instance.gameOver)
                   rb.velocity = Vector2.zero;
-               // return;
+              
 
            else if (!sliding)
                 rb.velocity = new Vector2(mouseDistance * speed, LevelController.instance.gameSpeed * LevelController.instance.multiplier);
@@ -86,7 +87,7 @@ public class Player : MonoBehaviour
     {
         if (LevelController.instance.gameOver)
              return;
-            //rb.velocity = Vector2.zero;
+           
         int children = transform.childCount;
         if(children <= 1)
         {

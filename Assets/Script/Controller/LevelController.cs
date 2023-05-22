@@ -14,7 +14,8 @@ public class LevelController : MonoBehaviour
     public Button ChangeColor;
 
     public Button Back;
-   
+
+    public GameObject followplayer;
 
     public Text scoreText;
     public Text highScore;
@@ -76,7 +77,7 @@ public class LevelController : MonoBehaviour
        
 
         gameSpeed = 0;
-       // Time.timeScale = 0f;
+     
         start.onClick.AddListener(StartBtn);
         ChangeColor.onClick.AddListener(ChangePlayer);
         Back.onClick.AddListener(BackToMain);
@@ -97,7 +98,7 @@ public class LevelController : MonoBehaviour
 
 
 
-        //  player.gameObject.GetComponent<SpriteRenderer>().sprite = DeathPlayer;
+      
         boxs1.SetActive(true);
         boxs2.SetActive(true);
         boxs3.SetActive(true);
@@ -169,8 +170,12 @@ public class LevelController : MonoBehaviour
     public void StartBtn()
     {
 
+        followplayer.GetComponent<FollowPlayer>().AddTail();
+        followplayer.GetComponent<FollowPlayer>().AddTail();
 
-      
+        followplayer.GetComponent<FollowPlayer>().AddTail();
+
+        followplayer.GetComponent<FollowPlayer>().AddTail();
 
         sprite.sprite = bgsprite[Random.Range(0, bgsprite.Length - 1)];
       
@@ -182,9 +187,7 @@ public class LevelController : MonoBehaviour
         ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
        
         gameSpeed = 4;
-        // scoreText.text = ("0");
-        // GameoverScoreText.text = ("0");
-        // Score(0);
+       
         BoxAmount = 6;
 
         multiplier = 1;
@@ -209,8 +212,15 @@ public class LevelController : MonoBehaviour
 
     public void RetryBtn()
     {
+        followplayer.GetComponent<FollowPlayer>().AddTail();
+        followplayer.GetComponent<FollowPlayer>().AddTail();
 
-      
+        followplayer.GetComponent<FollowPlayer>().AddTail();
+
+        followplayer.GetComponent<FollowPlayer>().AddTail();
+
+
+
 
         player.transform.position = new Vector2(0, 0);
         sprite.sprite = bgsprite[Random.Range(0, bgsprite.Length - 1)];
@@ -236,24 +246,21 @@ public class LevelController : MonoBehaviour
 
         
 
-        //  Application.LoadLevel(Application.LoadLevel);
+      
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+       
 
      
 
         ScreenManager.inst.SwitchScreen(ScreenType.Screen2);
-        //AudioManagerBG.inst.audioSource.Play();
-
+      
         scoreText.text = "0";
         int i = int.Parse(GameoverScoreText.text);
         Score(-i);
         gameOver = false;
 
       
-        //Time.timeScale = 1f;
-        // Score(0);
+      
         BoxAmount = 6;
         gameSpeed = 4;
         multiplier = 1;
@@ -285,28 +292,24 @@ public class LevelController : MonoBehaviour
         GameoverScoreText.text = scoreText.text;
 
         gameOver = true;
-        // Time.timeScale = 0f;
-       // gameSpeed = 0;
+       
 
         ScreenManager.inst.SwitchScreen(ScreenType.Screen3);
-      //  Instantiate(Gameoverprefab,gameoverpoint.transform.position, Quaternion.identity);
+     
     }
 
     public void RestartScene()
     {
-       
+      
 
 
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-       
+      
         AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio1MainBG);
           
        
        
-       // AudioManagerBG.inst.audioSource.Stop();
-        // mute.enabled = true;
-        //audiomute = true;
+      
 
         boxs1.transform.position = new Vector2(0, 16);
         boxs2.transform.position = new Vector2(0, 35);
@@ -331,7 +334,7 @@ public class LevelController : MonoBehaviour
             SFX[l].SetActive(false);
         }
 
-        //Time.timeScale = 1f;
+        
     }
 
     public void Score(int amount)
