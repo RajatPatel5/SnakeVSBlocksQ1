@@ -153,6 +153,7 @@ public class LevelController : MonoBehaviour
         {
             mute.enabled = false;
             AudioManagerBG.inst.audioSource.mute=true;
+            AudioManager.inst.audioSource.mute = true;
            
             audiomute = false;
 
@@ -161,7 +162,9 @@ public class LevelController : MonoBehaviour
         {
             mute.enabled = true;
             AudioManagerBG.inst.audioSource.mute=false;
-           
+            AudioManager.inst.audioSource.mute = false;
+
+
             audiomute = true;
         }
     }
@@ -244,9 +247,9 @@ public class LevelController : MonoBehaviour
       
          boxs3.GetComponent<Boxs>().Start();
 
-        
-      
-      
+
+
+        AudioManagerBG.inst.audioSource.Play();
 
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
        
