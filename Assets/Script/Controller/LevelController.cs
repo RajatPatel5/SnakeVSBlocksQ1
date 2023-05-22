@@ -245,8 +245,9 @@ public class LevelController : MonoBehaviour
          boxs3.GetComponent<Boxs>().Start();
 
         
-
       
+      
+
         AudioManager.inst.PlayAudio(AudioManager.AudioName.Audio4UIButton);
        
 
