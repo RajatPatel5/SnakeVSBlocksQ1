@@ -13,14 +13,16 @@ public class BaseScreen : MonoBehaviour
     public void Awake()
     {
         canvas = GetComponent<Canvas>();
+        canvas.enabled = false;
     }
 }
 
 
 public enum ScreenType
 {
-    Screen1,
-    Screen2,
-    Screen3,
-    Screen4
+    MainScreen,
+    Score,
+    GameOver,
+    Screen4,
+    Pause
 }

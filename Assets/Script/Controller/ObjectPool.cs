@@ -6,9 +6,7 @@ public class ObjectPool : MonoBehaviour
 {
     public GameObject prefab;
     public int amount;
-
     public GameObject[] prefabs;
-
     private int index;
    
     void Awake()
@@ -33,6 +31,4 @@ public class ObjectPool : MonoBehaviour
 
         return prefabs[index];
     }
-
- 
 }

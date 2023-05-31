@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class Boxs : MonoBehaviour
 {
-   
+
 
     public Box[] Allboxes;
-
     public GameObject[] blockline;
-
     private Transform player;
-
     public Vector2 positionRange;
-
     public GameObject boxsGroup;
 
-     public void Start()
+    public void Start()
     {
         player = FindObjectOfType<Player>().transform;
         SetBox();
@@ -26,13 +22,11 @@ public class Boxs : MonoBehaviour
         }
 
 
-     }
+    }
 
-  
-    
- public  void SetBox()
+    public void SetBox()
     {
-        for(int i = 0; i< Allboxes.Length; i++)
+        for (int i = 0; i < Allboxes.Length; i++)
         {
             Allboxes[i].SetAmount();
         }
@@ -41,22 +35,21 @@ public class Boxs : MonoBehaviour
             bool randomBool = Random.value > 0.5f;
             blockline[i].SetActive(randomBool);
         }
-      
+
     }
-   public void Reposition()
+
+    public void Reposition()
     {
         int boxsAmount = FindObjectsOfType<Boxs>().Length;
-      
 
-        transform.position = new Vector2(0, player.position.y + (LevelController.instance.blockLineDistance * (boxsAmount -1 )));
-
+        transform.position = new Vector2(0, player.position.y + (LevelController.instance.blockLineDistance * (boxsAmount - 1)));
         boxsGroup.transform.localPosition = new Vector2(0, Random.Range(positionRange.x, positionRange.y));
     }
-    
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             Reposition();
             SetBox();

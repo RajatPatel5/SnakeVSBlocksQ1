@@ -13,10 +13,11 @@ public class ScreenManager : MonoBehaviour
 
     void Start()
     {
+        GameStateManager.OnStateChange(GameStates.HomeScreen);
         inst = this;
         CurrentScreen.canvas.enabled = true;
-        AudioManagerBG.inst.PlayAudio(AudioManagerBG.AudioName.Audio1MainBG);
-        AudioManagerBG.inst.audioSource.Play();
+        AudioManager.inst.PlayAudioBG(AudioManager.AudioName.Audio1MainBG);
+        AudioManager.inst.audioSource.Play();
 
       
 
@@ -34,6 +35,19 @@ public class ScreenManager : MonoBehaviour
                 CurrentScreen = baseScreen;
                 break;
             }
+        }
+
+        switch (screenType)
+        {
+            case ScreenType.MainScreen:
+                GameStateManager.OnStateChange(GameStates.HomeScreen);
+                break;
+            case ScreenType.Score:
+                GameStateManager.OnStateChange(GameStates.GamePlay);
+                break;
+            case ScreenType.GameOver:
+                GameStateManager.OnStateChange(GameStates.GameOver);
+                break;
         }
     }
 

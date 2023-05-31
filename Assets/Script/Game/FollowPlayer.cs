@@ -22,6 +22,12 @@ public class FollowPlayer : MonoBehaviour
   
     void FixedUpdate()
     {
+        Position();
+    }
+
+    public void Position()
+    {
+        //Distance Player position - List Position Vector Length
         float distance = ((Vector2)transform.position - positions[0]).magnitude;
 
         if (distance > size)

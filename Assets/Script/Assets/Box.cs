@@ -6,33 +6,31 @@ using UnityEngine.UI;
 public class Box : MonoBehaviour
 {
     public Text amountText;
-
     private int amount;
-
     private Player player;
-
     private float nextTime;
-
-  
     private Color initialColor;
-
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-   
+
     void Start()
     {
-        
-       gameObject.SetActive(false);
-     }
+        gameObject.SetActive(false);
+    }
 
-   
+
     void Update()
     {
-        if(player != null && nextTime <Time.time)
+        Playerdamage();
+    }
+
+    public void Playerdamage()
+    {
+        if (player != null && nextTime < Time.time)
         {
             PlayerDamage();
         }
@@ -40,9 +38,9 @@ public class Box : MonoBehaviour
 
     public void SetAmount()
     {
-       gameObject.SetActive(true);
-        amount = Random.Range(0,LevelController.instance.BoxAmount);
-        if(amount <= 0)
+        gameObject.SetActive(true);
+        amount = Random.Range(0, LevelController.instance.BoxAmount);
+        if (amount <= 0)
         {
             gameObject.SetActive(false);
         }
@@ -61,15 +59,13 @@ public class Box : MonoBehaviour
         int playerLives = FindObjectOfType<Player>().transform.childCount;
         Color newColor;
 
-        if(amount > playerLives)
+        if (amount > playerLives)
         {
             newColor = LevelController.instance.R;
         }
-        else if(amount > playerLives /2)
+        else if (amount > playerLives / 2)
         {
             newColor = LevelController.instance.B;
-
-
         }
         else
         {
@@ -86,9 +82,9 @@ public class Box : MonoBehaviour
         player.TackDamage();
         amount--;
         SetAmountText();
-        if(amount <= 0)
+        if (amount <= 0)
         {
-          
+
             gameObject.SetActive(false);
             player = null;
         }
@@ -105,10 +101,10 @@ public class Box : MonoBehaviour
 
         spriteRenderer.color = initialColor;
 
-        while(timer < LevelController.instance.damageTime)
+        while (timer < LevelController.instance.damageTime)
         {
             spriteRenderer.color = Color.Lerp(initialColor, Color.white, t);
-               timer += Time.deltaTime;
+            timer += Time.deltaTime;
             t += Time.deltaTime / LevelController.instance.damageTime;
             yield return null;
 
@@ -121,11 +117,11 @@ public class Box : MonoBehaviour
     {
         Player otherPlayer = other.gameObject.GetComponent<Player>();
 
-        if(otherPlayer != null)
+        if (otherPlayer != null)
         {
             player = otherPlayer;
         }
-        
+
     }
     private void OnCollisionExit2D(Collision2D other)
     {

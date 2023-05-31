@@ -5,10 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager inst;
-
     [SerializeField]public AudioSource audioSource;
-
-
     public Audio[] clips;
 
 
@@ -31,13 +28,25 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+
+    public void PlayAudioBG(AudioName name)
+    {
+
+        foreach (var item in clips)
+        {
+            if (item.name == name)
+            {
+                audioSource.clip = item.clip;
+                audioSource.Play();
+                break;
+            }
+        }
+    }
     [System.Serializable]
     public class Audio
     {
         public AudioName name;
         public AudioClip clip;
-
-
     }
 
 
@@ -47,6 +56,9 @@ public class AudioManager : MonoBehaviour
         Audio2BlockHit,
         Audio3GameOver,
         Audio4UIButton,
-    }
 
+        Audio1MainBG,
+        Audio2GameBG,
+    }
+   
 }

@@ -22,6 +22,11 @@ public class PlayerOutfit : MonoBehaviour
 
     private void Update()
     {
+        ChangeOutfit();
+    }
+
+    public void ChangeOutfit()
+    {
         sprite1.sprite = sprite.sprite;
         sprite2.sprite = sprite.sprite;
         Player.sprite = sprite.sprite;
